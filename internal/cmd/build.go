@@ -7,6 +7,7 @@ import (
 	"github.com/semichkin-gopkg/airc/internal/templates"
 	"html/template"
 	"os"
+	"path/filepath"
 	"time"
 )
 
@@ -64,7 +65,11 @@ func build(output string) error {
 		return err
 	}
 
-	return os.WriteFile(output, buf.Bytes(), 0666)
+	if err := os.MkdirAll(filepath.Dir(output), os.ModePerm); err != nil {
+		return err
+	}
+
+	return os.WriteFile(output, buf.Bytes(), os.ModePerm)
 }
 
 func noescape(str string) template.HTML {
