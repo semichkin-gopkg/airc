@@ -1,5 +1,5 @@
 ## Air toml config builder
-A tool for generating .toml config for [air](https://github.com/cosmtrek/air)
+A tool for generating .toml config for [air](https://github.com/cosmtrek/air) with using ENV
 
 ### Installing
 `go install github.com/semichkin-gopkg/airc/cmd/airc@v0.0.1`
