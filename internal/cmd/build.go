@@ -13,9 +13,9 @@ import (
 
 type BuildVariables struct {
 	Root   string `env:"AIRC_ROOT" envDefault:"/app" envExpand:"true"`
-	TmpDir string `env:"AIRC_TMP_DIR" envDefault:"/apptmp"`
+	TmpDir string `env:"AIRC_TMP_DIR" envDefault:"../apptmp"`
 
-	BuildBin              string        `env:"AIRC_BUILD_BIN" envDefault:"$AIRC_ROOT/main" envExpand:"true"`
+	BuildBin              string        `env:"AIRC_BUILD_BIN" envDefault:"$AIRC_TMP_DIR/main" envExpand:"true"`
 	BuildCmdPathToSource  string        `env:"AIRC_BUILD_CMD_PATH_TO_SOURCE" envDefault:"$AIRC_ROOT/cmd/app/main.go" envExpand:"true"`
 	BuildCmd              string        `env:"AIRC_BUILD_CMD" envDefault:"cd $AIRC_ROOT && go build -o $AIRC_BUILD_BIN $AIRC_BUILD_CMD_PATH_TO_SOURCE" envExpand:"true"`
 	BuildDelay            uint          `env:"AIRC_BUILD_DELAY" envDefault:"1000" envExpand:"true"`
