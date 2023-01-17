@@ -25,7 +25,7 @@ type BuildVariables struct {
 	BuildExcludeUnchanged bool          `env:"AIRC_BUILD_EXCLUDE_UNCHANGED" envDefault:"false" envExpand:"true"`
 	BuildFollowSymlink    bool          `env:"AIRC_BUILD_FOLLOW_SYMLINK" envDefault:"false" envExpand:"true"`
 	BuildFullBin          string        `env:"AIRC_BUILD_FULL_BIN" envDefault:"" envExpand:"true"`
-	BuildIncludeDir       []string      `env:"AIRC_BUILD_INCLUDE_DIR" envDefault:"[]" envExpand:"true"`
+	BuildIncludeDir       []string      `env:"AIRC_BUILD_INCLUDE_DIR" envDefault:"" envExpand:"true"`
 	BuildIncludeExt       []string      `env:"AIRC_BUILD_INCLUDE_EXT" envDefault:"go,tpl,tmpl,html" envExpand:"true"`
 	BuildKillDelay        time.Duration `env:"AIRC_BUILD_KILL_DELAY" envDefault:"1s" envExpand:"true"`
 	BuildLog              string        `env:"AIRC_BUILD_LOG" envDefault:"$AIRC_TMP_DIR/build-errors.log" envExpand:"true"`
