@@ -3,9 +3,10 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	"github.com/caarlos0/env/v6"
 	"github.com/semichkin-gopkg/airc/internal/templates"
+	"github.com/semichkin-gopkg/env"
 	"html/template"
+	"log"
 	"os"
 	"path/filepath"
 	"time"
@@ -44,12 +45,13 @@ type BuildVariables struct {
 }
 
 func build(output string) error {
-	var vars BuildVariables
-	if err := env.Parse(&vars, env.Options{
-		OnSet: func(tag string, value interface{}, isDefault bool) {
-			_ = os.Setenv(tag, fmt.Sprintf("%v", value))
-		},
-	}); err != nil {
+	vars, err := env.Fill[BuildVariables](
+		env.WithOnSetFn(func(tag string, value interface{}, isDefault bool) {
+			if err := os.Setenv(tag, fmt.Sprintf("%v", value)); err != nil {
+				log.Println("Warning: failed to set env variable:", err)
+			}
+		}))
+	if err != nil {
 		return err
 	}
 

@@ -11,7 +11,7 @@ func Main() {
 		Name:        "airc",
 		Usage:       "Air config builder",
 		Description: "A tool for generating .toml config for air (https://github.com/cosmtrek/air)",
-		Version:     "v0.0.5",
+		Version:     "v0.0.6",
 		Commands: []*cli.Command{
 			{
 				Name:    "build",

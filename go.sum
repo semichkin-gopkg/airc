@@ -4,6 +4,10 @@ github.com/cpuguy83/go-md2man/v2 v2.0.2 h1:p1EgwI/C7NhT0JmVkwCD2ZBK8j4aeHQX2pMHH
 github.com/cpuguy83/go-md2man/v2 v2.0.2/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
+github.com/semichkin-gopkg/configurator v0.0.2 h1:NxgkQ3Hl6fL8JCXZ83ea8nBuFR8VKSlhPBVauJDtJv0=
+github.com/semichkin-gopkg/configurator v0.0.2/go.mod h1:DQbEy5n8j/BOEIN6pq/Gn3Bor39Wct6BfcEgsRuvi2A=
+github.com/semichkin-gopkg/env v0.0.2 h1:SBFsGBlV0LShT1Jklal23+wHs2W6MbpN4zX5Wxp7xhI=
+github.com/semichkin-gopkg/env v0.0.2/go.mod h1:+014T6HorNO4kNDkBx6GNZOe6W1BzEBVAwc7SCFODVo=
 github.com/urfave/cli/v2 v2.23.7 h1:YHDQ46s3VghFHFf1DdF+Sh7H4RqhcM+t0TmZRJx4oJY=
 github.com/urfave/cli/v2 v2.23.7/go.mod h1:GHupkWPMM0M/sj1a2b4wUrWBPzazNrIjouW6fmdJLxc=
 github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 h1:bAn7/zixMGCfxrRTfdpNzjtPYqr8smhKouy9mxVdGPU=
