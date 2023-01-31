@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"github.com/semichkin-gopkg/airc/internal/templates"
 	"github.com/semichkin-gopkg/env"
@@ -44,7 +45,7 @@ type BuildVariables struct {
 	MiscCleanOnExit bool `env:"AIRC_MISC_CLEAN_ON_EXIT" envDefault:"false" envExpand:"true"`
 }
 
-func build(output string) error {
+func build(_ context.Context, configPath string) error {
 	vars, err := env.Fill[BuildVariables](
 		env.WithOnSetFn(func(tag string, value interface{}, isDefault bool) {
 			if err := os.Setenv(tag, fmt.Sprintf("%v", value)); err != nil {
@@ -63,15 +64,15 @@ func build(output string) error {
 	}
 
 	buf := &bytes.Buffer{}
-	if err := tmpl.Execute(buf, vars); err != nil {
+	if err = tmpl.Execute(buf, vars); err != nil {
 		return err
 	}
 
-	if err := os.MkdirAll(filepath.Dir(output), os.ModePerm); err != nil {
+	if err = os.MkdirAll(filepath.Dir(configPath), os.ModePerm); err != nil {
 		return err
 	}
 
-	return os.WriteFile(output, buf.Bytes(), os.ModePerm)
+	return os.WriteFile(configPath, buf.Bytes(), os.ModePerm)
 }
 
 func noescape(str string) template.HTML {

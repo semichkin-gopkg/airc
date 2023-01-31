@@ -1,17 +1,27 @@
 package cmd
 
 import (
+	"context"
 	"github.com/urfave/cli/v2"
 	"log"
 	"os"
+	"os/signal"
+	"syscall"
 )
 
 func Main() {
+	ctx, cancel := context.WithCancel(context.Background())
+	go func() {
+		sigint := make(chan os.Signal, 1)
+		signal.Notify(sigint, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
+		<-sigint
+		cancel()
+	}()
+
 	app := &cli.App{
-		Name:        "airc",
-		Usage:       "Air config builder",
-		Description: "A tool for generating .toml config for air (https://github.com/cosmtrek/air)",
-		Version:     "v0.0.6",
+		Name:    "airc",
+		Usage:   "Air-based utility for live reloading with config building by env variables throwing",
+		Version: "v0.0.7",
 		Commands: []*cli.Command{
 			{
 				Name:    "build",
@@ -20,14 +30,52 @@ func Main() {
 
 				Flags: []cli.Flag{
 					&cli.PathFlag{
-						Name:        "output",
-						Aliases:     []string{"o"},
+						Name:        "config",
+						Aliases:     []string{"c"},
 						Value:       ".air.toml",
 						DefaultText: ".air.toml",
 					},
 				},
 				Action: func(context *cli.Context) error {
-					return build(context.Path("output"))
+					return build(ctx, context.Path("config"))
+				},
+			},
+			{
+				Name:    "run",
+				Aliases: []string{"r"},
+				Usage:   "Run air",
+
+				Flags: []cli.Flag{
+					&cli.PathFlag{
+						Name:        "config",
+						Aliases:     []string{"c"},
+						Value:       ".air.toml",
+						DefaultText: ".air.toml",
+					},
+				},
+				Action: func(context *cli.Context) error {
+					return run(ctx, context.Path("config"))
+				},
+			},
+			{
+				Name:    "build-run",
+				Aliases: []string{"br"},
+				Usage:   "Build config and run air",
+
+				Flags: []cli.Flag{
+					&cli.PathFlag{
+						Name:        "config",
+						Aliases:     []string{"c"},
+						Value:       ".air.toml",
+						DefaultText: ".air.toml",
+					},
+				},
+				Action: func(context *cli.Context) error {
+					configPath := context.Path("config")
+					if err := build(ctx, configPath); err != nil {
+						return err
+					}
+					return run(ctx, configPath)
 				},
 			},
 		},
