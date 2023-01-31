@@ -20,7 +20,7 @@ func Main() {
 
 	app := &cli.App{
 		Name:    "airc",
-		Usage:   "Air-based utility for live reloading with config building by env variables throwing",
+		Usage:   "Air-based utility for live reloading with config building by throwing env variables",
 		Version: "v0.0.7",
 		Commands: []*cli.Command{
 			{
