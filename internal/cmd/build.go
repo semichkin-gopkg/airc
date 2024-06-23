@@ -4,13 +4,14 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/semichkin-gopkg/airc/internal/templates"
-	"github.com/semichkin-gopkg/env"
 	"html/template"
 	"log"
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/semichkin-gopkg/airc/internal/templates"
+	"github.com/semichkin-gopkg/env"
 )
 
 type BuildVariables struct {
@@ -31,7 +32,7 @@ type BuildVariables struct {
 	BuildIncludeExt       []string      `env:"AIRC_BUILD_INCLUDE_EXT" envDefault:"go,tpl,tmpl,html" envExpand:"true"`
 	BuildKillDelay        time.Duration `env:"AIRC_BUILD_KILL_DELAY" envDefault:"1s" envExpand:"true"`
 	BuildLog              string        `env:"AIRC_BUILD_LOG" envDefault:"$AIRC_TMP_DIR/build-errors.log" envExpand:"true"`
-	BuildSendInterrupt    bool          `env:"AIRC_BUILD_SEND_INTERRUPT" envDefault:"false" envExpand:"true"`
+	BuildSendInterrupt    bool          `env:"AIRC_BUILD_SEND_INTERRUPT" envDefault:"true" envExpand:"true"`
 	BuildStopOnError      bool          `env:"AIRC_BUILD_STOP_ON_ERROR" envDefault:"false" envExpand:"true"`
 
 	ColorApp     string `env:"AIRC_COLOR_APP" envDefault:"" envExpand:"true"`

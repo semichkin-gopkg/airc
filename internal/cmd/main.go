@@ -1,27 +1,21 @@
 package cmd
 
 import (
-	"context"
-	"github.com/urfave/cli/v2"
 	"log"
 	"os"
-	"os/signal"
-	"syscall"
+
+	"github.com/semichkin-gopkg/gracectx"
+	"github.com/urfave/cli/v2"
 )
 
 func Main() {
-	ctx, cancel := context.WithCancel(context.Background())
-	go func() {
-		sigint := make(chan os.Signal, 1)
-		signal.Notify(sigint, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
-		<-sigint
-		cancel()
-	}()
+	ctx, cancel := gracectx.New()
+	defer cancel()
 
 	app := &cli.App{
 		Name:    "airc",
 		Usage:   "Air-based utility for live reloading with config building by throwing env variables",
-		Version: "v0.0.7",
+		Version: "v0.0.8",
 		Commands: []*cli.Command{
 			{
 				Name:    "build",
