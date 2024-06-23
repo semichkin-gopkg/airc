@@ -5,32 +5,32 @@ root = "{{ .Root | noescape }}"
 tmp_dir = "{{ .TmpDir | noescape }}"
 
 [build]
-  bin = "{{ .BuildBin | noescape }}"
-  cmd = "{{ .BuildCmd | noescape }}"
-  delay = {{ .BuildDelay }}
-  exclude_dir = [{{range .BuildExcludeDir}}"{{.}}",{{end}}]
-  exclude_file = [{{range .BuildExcludeFile}}"{{.}}",{{end}}]
-  exclude_regex = [{{range .BuildExcludeRegex}}"{{.}}",{{end}}]
-  exclude_unchanged = {{ .BuildExcludeUnchanged }}
-  follow_symlink = {{ .BuildFollowSymlink }}
-  full_bin = "{{ .BuildFullBin }}"
-  include_dir = [{{range .BuildIncludeDir}}"{{.}}",{{end}}]
-  include_ext = [{{range .BuildIncludeExt}}"{{.}}",{{end}}]
-  kill_delay = "{{ .BuildKillDelay }}"
-  log = "{{ .BuildLog | noescape }}"
-  send_interrupt = {{ .BuildSendInterrupt }}
-  stop_on_error = {{ .BuildStopOnError }}
+  bin = "{{.Bin | noescape}}"
+  cmd = "{{.Cmd | noescape}}"
+  delay = {{.Delay}}
+  exclude_dir = [{{range .ExcludeDir}}"{{.}}",{{end}}]
+  exclude_file = [{{range .ExcludeFile}}"{{.}}",{{end}}]
+  exclude_regex = [{{range .ExcludeRegex}}"{{.}}",{{end}}]
+  exclude_unchanged = {{.ExcludeUnchanged}}
+  follow_symlink = {{.FollowSymlink}}
+  full_bin = "{{.FullBin}}"
+  include_dir = [{{range .IncludeDir}}"{{.}}",{{end}}]
+  include_ext = [{{range .IncludeExt}}"{{.}}",{{end}}]
+  kill_delay = "{{.KillDelay}}"
+  log = "{{.Log | noescape}}"
+  send_interrupt = {{.SendInterrupt}}
+  stop_on_error = {{.StopOnError}}
 
 [color]
-  app = "{{ .ColorApp | noescape }}"
-  build = "{{ .ColorBuild | noescape }}"
-  main = "{{ .ColorMain | noescape }}"
-  runner = "{{ .ColorRunner | noescape }}"
-  watcher = "{{ .ColorWatcher | noescape }}"
+  app = "{{.ColorApp | noescape}}"
+  build = "{{.ColorBuild | noescape}}"
+  main = "{{.ColorMain | noescape}}"
+  runner = "{{.ColorRunner | noescape}}"
+  watcher = "{{.ColorWatcher | noescape}}"
 
 [log]
-  time = {{ .LogTime }}
+  time = {{.LogTime}}
 
 [misc]
-  clean_on_exit = {{ .MiscCleanOnExit }}
+  clean_on_exit = {{.MiscCleanOnExit}}
 `
