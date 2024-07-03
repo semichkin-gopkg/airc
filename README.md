@@ -1,7 +1,7 @@
 ## [Air](https://github.com/cosmtrek/air)-based utility for live reloading with config building by throwing env variables
 
 ### Installing
-`go install github.com/semichkin-gopkg/airc/cmd/airc@v0.0.9`
+`go install github.com/semichkin-gopkg/airc/cmd/airc@v0.0.10`
 
 ### Usage
 #### Build configuration
