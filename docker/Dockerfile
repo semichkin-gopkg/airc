@@ -1,7 +1,8 @@
-FROM golang:1.22.2-alpine3.19
+FROM golang:1.23.1-alpine3.20
 
 RUN apk update
 RUN apk add git
+RUN apk add curl
 
 COPY ./ /src
 WORKDIR /src

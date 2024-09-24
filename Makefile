@@ -1,4 +1,4 @@
-image_version := v0.0.12
+image_version := v0.0.13
 
 local-build:
 	docker build \
